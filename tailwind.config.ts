@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -9,13 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        '13': 'repeat(13, minmax(0, 1fr))',
+        13: 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
         blue: {
           400: '#2589FE',
           500: '#0070F3',
           600: '#2F6FEB',
+        },
+        green: {
+          400: '#66BB6A',
+          500: '#4CAF50',
+          600: '#43A047',
         },
       },
     },
