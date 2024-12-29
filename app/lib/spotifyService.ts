@@ -1,90 +1,118 @@
+import axios from 'axios';
+import { Contestant } from './models/contestant';
+import { SpotifyTracksResponse, Track, SpotifyPlaylist } from './models/spotifyModels';
+
+export const trackToContestant = (track: Track): Contestant => ({
+  countryCode: '',
+  countryName: '',
+  songTitle: track.name,
+  singer: track.artists[0].name,
+  points: 0,
+  spotifyData: [
+    {
+      trackId: track.id,
+      title: track.name,
+      singer: track.artists[0].name,
+      imageUrl: track.album.images[0].url,
+    },
+  ],
+});
+
+export const artistsToContestants = (track: Track): Contestant => ({
+  countryCode: '',
+  countryName: '',
+  songTitle: track.name,
+  singer: '',
+  points: 0,
+  spotifyData: [
+    {
+      trackId: track.id,
+      title: track.name,
+      singer: '',
+      imageUrl: track.album.images[0].url,
+    },
+  ],
+});
+
 // eslint-disable-next-line max-len
 export const authorizationUrl = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_PUBLIC_client_id}&response_type=token&redirect_uri=${process.env.NEXT_PUBLIC_redirect_url}&scope=user-top-read`;
 
-// getTopTracks(code: string, timeRange: string, type: string) {
-//   let headers = new HttpHeaders();
-//   headers = headers.set('Accept', 'application/json');
-//   headers = headers.set('Content-Type', 'application/json');
-//   headers = headers.set('Authorization', `Bearer ${code}`);
-//   return this.http.get(`https://api.spotify.com/v1/me/top/${type}?time_range=${timeRange}&limit=50&offset=0`, { headers })
-//    .pipe(take(1), map((res: any) => res.items || []));
-// }
+export const getTopTracks = async (token: string, timeRange: string) => {
+  try {
+    const response = await axios.get<SpotifyTracksResponse>('https://api.spotify.com/v1/me/top/tracks', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        time_range: timeRange,
+        limit: 50,
+        offset: 0,
+      },
+    });
+    return response.data.items || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
-// getProfile(token: string) {
-//   let headers = new HttpHeaders();
-//   headers = headers.set('Accept', 'application/json');
-//   headers = headers.set('Content-Type', 'application/json');
-//   headers = headers.set('Authorization', `Bearer ${token}`);
-//   return this.http.get('https://api.spotify.com/v1/me', { headers })
-//     .pipe(
-//       take(1),
-//       tap((res) => console.log(res)),
-//       map((profile: any) => ({ id: profile.id, name: profile.display_name })),
-//     );
-// }
+export const getProfile = async (token: string) => {
+  try {
+    const response = await axios.get('https://api.spotify.com/v1/me', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const profile = response.data;
+    return { id: profile.id, name: profile.display_name };
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
 
-// searchTrack(searchTerm: string, token: string) {
-//   let headers = new HttpHeaders();
-//   headers = headers.set('Accept', 'application/json');
-//   headers = headers.set('Content-Type', 'application/json');
-//   headers = headers.set('Authorization', `Bearer ${token}`);
-//   return this.http.get(`https://api.spotify.com/v1/search?q=${searchTerm}&type=track`, { headers })
-//    .pipe(take(1), map((res: any) => res.tracks.items || []));
-// }
+export const searchTrack = async (searchTerm: string, token: string) => {
+  try {
+    const response = await axios.get('https://api.spotify.com/v1/search', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        q: searchTerm,
+        type: 'track',
+      },
+    });
+    return response.data.tracks.items || [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 
-// getPlaylist(id: string, token: string) {
-//   let headers = new HttpHeaders();
-//   headers = headers.set('Accept', 'application/json');
-//   headers = headers.set('Content-Type', 'application/json');
-//   headers = headers.set('Authorization', `Bearer ${token}`);
-//   return this.http.get(`https://api.spotify.com/v1/playlists/${id}?limit=50`, { headers })
-//     .pipe(
-//       take(1),
-//       tap((res) => console.log(res)),
-//       map((data: any) => ({ name: data.name, contestants: data.tracks.items.map((i) => i.track) })),
-//       tap((playlist) => console.log('TRACKS', playlist.contestants)),
-//       map((playlist) => ({ name: playlist.name, contestants: this.tracksToContestants(playlist.contestants) })),
-//     );
-// }
-
-// tracksToContestants(tracks: Track[]): Contestant[] {
-//   return tracks.map((t) => {
-//     const contestant: Contestant = {
-//       countryCode: '',
-//       countryName: '',
-//       songTitle: t.name,
-//       singer: t.artists[0].name,
-//       points: 0,
-//       spotifyData: [
-//         {
-//           trackId: t.id,
-//           title: t.name,
-//           singer: t.artists[0].name,
-//           imageUrl: t.album.images[0].url,
-//         },
-//       ],
-//     };
-//     return contestant;
-//   });
-// }
-
-// artistsToContestants(tracks: Track[]): Contestant[] {
-//   return tracks.map((t) => {
-//     const contestant: Contestant = {
-//       countryCode: '',
-//       countryName: '',
-//       songTitle: t.name,
-//       singer: null,
-//       points: 0,
-//       spotifyData: [
-//         {
-//           trackId: t.id,
-//           title: t.name,
-//           singer: null,
-//           imageUrl: t.images[0].url,
-//         },
-//       ],
-//     };
-//     return contestant;
-//   });
-// }
+export const getPlaylist = async (id: string, token: string) => {
+  try {
+    const response = await axios.get<SpotifyPlaylist>(`https://api.spotify.com/v1/playlists/${id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 50,
+      },
+    });
+    return {
+      name: response.data.name,
+      contestants: response.data.tracks.items.map((item) => trackToContestant(item.track)),
+    };
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
