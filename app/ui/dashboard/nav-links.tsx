@@ -14,11 +14,11 @@ import clsx from 'clsx';
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
-    name: 'Invoices',
-    href: '/dashboard/invoices',
+    name: 'Benidorm Fest 2025',
+    href: '/dashboard/benidorm-fest-2025',
     icon: DocumentDuplicateIcon,
   },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
+  { name: 'Your Top Songs', href: '/dashboard/your-top-songs', icon: UserGroupIcon },
 ];
 
 export default function NavLinks() {

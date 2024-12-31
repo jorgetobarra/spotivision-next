@@ -6,8 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useAuthentication } from '../lib/hooks/useAuthentication';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { getSpotifyToken } = useAuthentication();
   const router = useRouter();
+  const { getSpotifyToken } = useAuthentication();
   const token = getSpotifyToken();
 
   useEffect(() => {

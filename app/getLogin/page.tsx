@@ -27,9 +27,10 @@ export default function GetLogin() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // TODO: Set a loader here
   return (
     <div>
-      Hi, login.
+      Hi, getLogin.
     </div>
   );
 }

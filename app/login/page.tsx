@@ -8,6 +8,7 @@ export default function Login() {
     window.location.href = authorizationUrl;
   }, []);
 
+  // TODO: Set a loader here
   return (
     <div>
       Hi, login.

@@ -42,8 +42,13 @@ export const getUserTotalScores = async (token: string) => {
   return finalResults;
 };
 
+export const getGenericScores = async (token: string) => {
+  const userScores = await getUserTotalScores(token);
+  return userScores.sort((a, b) => b.points - a.points).slice(0, 10);
+};
+
 export const getPlaylistScores = async (token: string, playlistId: string) => {
-  const playlist = await getPlaylist(token, playlistId);
+  const playlist = await getPlaylist(playlistId, token);
   const finalScores: Contestant[] = [];
   const userScores = await getUserTotalScores(token);
   playlist?.contestants.forEach((contestant) => {

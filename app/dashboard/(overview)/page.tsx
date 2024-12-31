@@ -18,8 +18,11 @@ export default async function Page() {
   return (
     <main>
       <h1 className={`${rubik.className} mb-4 text-xl md:text-2xl`}>
-        Dashboard
+        Select a contest to create your top
       </h1>
+      <h2 className={`${rubik.className} mb-4 font-light text-sm md:text-md`}>
+        Your top will be based on the times you listened to the songs of the selected contest.
+      </h2>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <Card title="Collected" value="100" type="collected" />
         <Card title="Pending" value="100" type="pending" />
