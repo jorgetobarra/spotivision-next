@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import SideNav from '@/app/ui/dashboard/sidenav';
+import SideNav from '@/app/dashboard/_components/Sidenav';
 import { useRouter } from 'next/navigation';
 import { useAuthentication } from '../lib/hooks/useAuthentication';
 

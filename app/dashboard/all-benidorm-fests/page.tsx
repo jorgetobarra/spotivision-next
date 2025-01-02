@@ -5,7 +5,7 @@ import { TopPage } from '../_components/TopPage';
 export default function Page() {
   return (
     <Suspense fallback={<RevenueChartSkeleton />}>
-      <TopPage topName="Your top songs" />
+      <TopPage topName="All Benidorm Fests" playlist="337QzVZknW5O61N67qpaOv" />
     </Suspense>
   );
 }
