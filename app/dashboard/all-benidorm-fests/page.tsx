@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
-import { RevenueChartSkeleton } from '../../ui/skeletons';
+import { Loader } from '../../ui/Loader';
 import { TopPage } from '../_components/TopPage';
 
 export default function Page() {
   return (
-    <Suspense fallback={<RevenueChartSkeleton />}>
+    <Suspense fallback={<Loader />}>
       <TopPage topName="All Benidorm Fests" playlist="337QzVZknW5O61N67qpaOv" />
     </Suspense>
   );

@@ -18,7 +18,7 @@ export function TopPage({ topName, playlist }: {topName: string, playlist?: stri
     if (downloadRef?.current) {
       downloadRef.current.hidden = false;
       // @ts-expect-error - ref.current is not null, idk why
-      await exportToPng(downloadRef);
+      await exportToPng(downloadRef, topName + ' Spotivision top');
       downloadRef.current.hidden = true;
     } else {
       console.error('Ref is null', downloadRef);
@@ -42,7 +42,7 @@ export function TopPage({ topName, playlist }: {topName: string, playlist?: stri
   }, []);
 
   return (
-    <>
+    <div className="items-center w-[100%] justify-items-center">
       <button
         type="button"
         onClick={handleDownload}
@@ -52,6 +52,6 @@ export function TopPage({ topName, playlist }: {topName: string, playlist?: stri
         Download your top
       </button>
       <Top topName={topName} results={results} downloadRef={downloadRef} />
-    </>
+    </div>
   );
 }

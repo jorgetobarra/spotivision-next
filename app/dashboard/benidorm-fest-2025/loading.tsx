@@ -1,5 +1,5 @@
-import { LatestInvoicesSkeleton } from '@/app/ui/skeletons';
+import { Loader } from '../../ui/Loader';
 
 export default function Loading() {
-  return <LatestInvoicesSkeleton />;
+  return <Loader />;
 }

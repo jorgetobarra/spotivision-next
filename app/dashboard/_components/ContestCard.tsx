@@ -15,7 +15,7 @@ export function Card({
 }: {
   title: string;
   href: string;
-  playlistId?: string;
+  playlistId: string | null;
 }) {
   const router = useRouter();
   const { getPlaylistImage } = usePlaylistImage();

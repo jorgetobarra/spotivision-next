@@ -2,8 +2,7 @@ import { rubik } from '@/app/ui/fonts';
 import { Contestant } from '../../lib/models/contestant';
 
 const usualClassNames = {
-  container: `${rubik.className} flex items-center justify-start p-1
-  max-w-[720px] bg-green-500 text-white rounded-lg shadow-md mb-2`,
+  container: `${rubik.className} flex items-center justify-center p-1 max-w-[720px] w-[100%] self-center bg-green-500 text-white rounded-lg shadow-md mb-2`,
   position: 'text-xl font-bold mx-2 w-[1.3rem]',
   image: 'w-8 h-8 rounded-full mr-2 w-fit',
   songInfo: 'flex flex-col w-[100%]',
