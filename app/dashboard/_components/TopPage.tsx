@@ -45,11 +45,11 @@ export function TopPage({
 
   React.useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="w-[100%] items-center justify-items-center">
+    <div className="w-[100%] justify-items-center">
       <button
         type="button"
         onClick={handleDownload}

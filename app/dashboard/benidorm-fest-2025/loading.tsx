@@ -1,5 +1,5 @@
-import { Loader } from '../../ui/Loader';
+import { LoaderPage } from '../../ui/LoaderPage';
 
 export default function Loading() {
-  return <Loader />;
+  return <LoaderPage />;
 }

@@ -33,7 +33,7 @@ function NavLink({
       )}
     >
       {image ? (
-        <img src={image} alt={`${name}`} className="h-6 w-6 min-w-fit" />
+        <img src={image} alt={`${name}`} className="h-6 w-6" />
       ) : (
         <LinkIcon className="w-6" />
       )}

@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthentication } from '../lib/hooks/useAuthentication';
-import { Loader } from '../ui/Loader';
+import { LoaderPage } from '../ui/LoaderPage';
 
 export default function GetLogin() {
   const { storeSpotifyToken } = useAuthentication();
@@ -31,9 +31,5 @@ export default function GetLogin() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <div className="flex h-[100vh] w-[100vw] justify-center">
-      <Loader />
-    </div>
-  );
+  return <LoaderPage />;
 }

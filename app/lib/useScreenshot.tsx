@@ -8,6 +8,9 @@ export const useScreenshot = () => {
   ) => {
     if (ref.current) {
       try {
+        await toPng(ref.current);
+        await toPng(ref.current);
+        await toPng(ref.current);
         const dataUrl = await toPng(ref.current);
         const link = document.createElement('a');
         link.href = dataUrl;
@@ -25,6 +28,9 @@ export const useScreenshot = () => {
   ) => {
     if (ref.current) {
       try {
+        await toJpeg(ref.current, { quality: 0.95 });
+        await toJpeg(ref.current, { quality: 0.95 });
+        await toJpeg(ref.current, { quality: 0.95 });
         const dataUrl = await toJpeg(ref.current, { quality: 0.95 });
         const link = document.createElement('a');
         link.href = dataUrl;
