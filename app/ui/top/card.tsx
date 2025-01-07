@@ -22,9 +22,9 @@ const printClassNames = {
 };
 
 export interface CardProps {
-    track: Contestant;
-    position: number;
-    print?: boolean;
+  track: Contestant;
+  position: number;
+  print?: boolean;
 }
 
 const points = [12, 10, 8, 7, 6, 5, 4, 3, 2, 1];
@@ -34,10 +34,12 @@ export function Card({ track, position, print }: CardProps) {
 
   return (
     <div className={classNames.container}>
-      <h1 className={classNames.position}>
-        {points[position]}
-      </h1>
-      <img src={track.spotifyData[0].imageUrl} alt={track.songTitle} className={classNames.image} />
+      <h1 className={classNames.position}>{points[position]}</h1>
+      <img
+        src={track.spotifyData[0].imageUrl}
+        alt={track.songTitle}
+        className={classNames.image}
+      />
       <div className={classNames.songInfo}>
         <p className={classNames.songTitle}>{track.songTitle}</p>
         <p className={classNames.singer}>{track.singer}</p>

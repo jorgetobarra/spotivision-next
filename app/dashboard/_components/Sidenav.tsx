@@ -20,7 +20,7 @@ export default function SideNav() {
         className="mb-2 flex h-20 items-end justify-start rounded-md bg-green-600 p-4 md:h-40"
         href="/"
       >
-        <div className="w-full text-white flex justify-center">
+        <div className="flex w-full justify-center text-white">
           <SpotivisionLogo />
         </div>
       </Link>
@@ -29,7 +29,7 @@ export default function SideNav() {
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block" />
         <div
           className={`flex h-[48px] w-full grow items-center justify-end gap-2 rounded-md
-          bg-gray-50 p-3 text-xs font-light hover:bg-gradient-to-r from-violet-300 to-blue-200 text-violet-300 hover:text-white md:flex-none md:justify-start md:p-2 md:px-3`}
+          bg-gray-50 from-violet-300 to-blue-200 p-3 text-xs font-light text-violet-300 hover:bg-gradient-to-r hover:text-white md:flex-none md:justify-start md:p-2 md:px-3`}
         >
           <div className="">Created with love, by Jologe</div>
           {/* <div className="block md:hidden">by Jologe</div> */}

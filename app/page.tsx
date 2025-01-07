@@ -9,7 +9,9 @@ import { contestsLinks } from './lib/contestsList';
 import { useAuthentication } from './lib/hooks/useAuthentication';
 import { AnimatedPhotoGallery } from './ui/Carousel';
 
-const albumCovers = contestsLinks.map((link) => link.image).filter((image) => image !== null);
+const albumCovers: string[] = contestsLinks
+  .map((link) => link.image || '')
+  .filter((image) => !!image.length);
 
 export default function Page() {
   const { getSpotifyToken } = useAuthentication();
@@ -24,7 +26,7 @@ export default function Page() {
 
   return (
     <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 align-items-center justify-center rounded-lg bg-green-500 p-4 md:h-52">
+      <div className="align-items-center flex h-20 shrink-0 justify-center rounded-lg bg-green-500 p-4 md:h-52">
         <SpotivisionLogo size="xl" />
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
@@ -32,9 +34,15 @@ export default function Page() {
           <p className="text-xl text-gray-800 md:text-3xl md:leading-normal">
             <strong>Welcome to Spotivision.</strong>
             <br />
-            This app will create your top of the songs for Benidorm Fest, Eurovision, and other music competitions based on what you listen to on
+            This app will create your top of the songs for Benidorm Fest,
+            Eurovision, and other music competitions based on what you listen to
+            on
             {' '}
-            <a href="https://open.spotify.com/" target="blank" className="text-green-500">
+            <a
+              href="https://open.spotify.com/"
+              target="blank"
+              className="text-green-500"
+            >
               Spotify
             </a>
             .
@@ -45,11 +53,10 @@ export default function Page() {
             text-white transition-colors hover:bg-green-400 md:text-base"
           >
             <span>Log in with Spotify</span>
-            {' '}
             <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
         </div>
-        <div className="flex items-center justify-center bg-gray-50 rounded-lg p-6 md:w-2/5">
+        <div className="flex items-center justify-center rounded-lg bg-gray-50 p-6 md:w-2/5">
           <AnimatedPhotoGallery imagesUrls={albumCovers} />
         </div>
       </div>

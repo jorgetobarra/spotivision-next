@@ -5,7 +5,9 @@ import { getPlaylist } from './spotifyService';
 import { useAuthentication } from './hooks/useAuthentication';
 
 export const usePlaylistImage = () => {
-  const [imagesSrc, setImagesSrc] = useState<Record<string, string> | null>(null);
+  const [imagesSrc, setImagesSrc] = useState<Record<string, string> | null>(
+    null,
+  );
   const { getSpotifyToken } = useAuthentication();
 
   const getPlaylistImage = async (id: string) => {

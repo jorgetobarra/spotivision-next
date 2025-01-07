@@ -11,12 +11,15 @@ export default function GetLogin() {
 
   useEffect(() => {
     const myUrl = new URL(window.location.href);
-    const result = myUrl.hash.substring(1).split('&').reduce((res, item) => {
-      const parts = item.split('=');
-      // eslint-disable-next-line prefer-destructuring
-      res[parts[0]] = parts[1];
-      return res;
-    }, {} as any);
+    const result = myUrl.hash
+      .substring(1)
+      .split('&')
+      .reduce((res, item) => {
+        const parts = item.split('=');
+        // eslint-disable-next-line prefer-destructuring
+        res[parts[0]] = parts[1];
+        return res;
+      }, {} as any);
 
     if (!result.access_token) {
       router.push('/login');
@@ -25,11 +28,11 @@ export default function GetLogin() {
 
     storeSpotifyToken(result.access_token, result.expires_in);
     router.push('/');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="flex justify-center w-[100vw] h-[100vh]">
+    <div className="flex h-[100vh] w-[100vw] justify-center">
       <Loader />
     </div>
   );

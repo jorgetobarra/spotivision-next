@@ -10,14 +10,16 @@ export const contestsLinks = [
     href: '/dashboard/benidorm-fest-2025',
     icon: DocumentDuplicateIcon,
     playlistId: '1G9e7rMXjXUnU17uK9WefP',
-    image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8440d575bec461f1f595017ef6',
+    image:
+      'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8440d575bec461f1f595017ef6',
   },
   {
     name: 'All Benidorm Fests',
     href: '/dashboard/all-benidorm-fests',
     icon: UserGroupIcon,
     playlistId: '337QzVZknW5O61N67qpaOv',
-    image: 'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84b30b6ef807d53488c90354af',
+    image:
+      'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84b30b6ef807d53488c90354af',
   },
   {
     name: 'Your Top Songs',

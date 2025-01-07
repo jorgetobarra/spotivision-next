@@ -1,16 +1,24 @@
 'use client';
 
-import {
-  HomeIcon,
-} from '@heroicons/react/24/outline';
+import { HomeIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { contestsLinks } from '../../lib/contestsList';
 
 function NavLink({
-  name, href, icon, image, className,
-}: { name: string, href: string, icon: any, image: string | null, className: string }) {
+  name,
+  href,
+  icon,
+  image,
+  className,
+}: {
+  name: string;
+  href: string;
+  icon: any;
+  image: string | null;
+  className: string;
+}) {
   const pathname = usePathname();
   const LinkIcon = icon;
   return (
@@ -24,7 +32,11 @@ function NavLink({
         },
       )}
     >
-      { image ? <img src={image} alt={`${name}`} className="w-6 h-6 min-w-fit" /> : <LinkIcon className="w-6" />}
+      {image ? (
+        <img src={image} alt={`${name}`} className="h-6 w-6 min-w-fit" />
+      ) : (
+        <LinkIcon className="w-6" />
+      )}
       <p className="hidden md:block">{name}</p>
     </Link>
   );
@@ -33,7 +45,10 @@ function NavLink({
 export default function NavLinks() {
   const links = [
     {
-      name: 'Home', href: '/dashboard', icon: HomeIcon, image: null,
+      name: 'Home',
+      href: '/dashboard',
+      icon: HomeIcon,
+      image: null,
     },
     ...contestsLinks,
   ];
@@ -41,9 +56,22 @@ export default function NavLinks() {
   return (
     <>
       {links.map((link) => (
-        <NavLink key={link.name} name={link.name} href={link.href} icon={link.icon} image={link.image} className="hidden md:flex" />
+        <NavLink
+          key={link.name}
+          name={link.name}
+          href={link.href}
+          icon={link.icon}
+          image={link.image}
+          className="hidden md:flex"
+        />
       ))}
-      <NavLink name={links[0].name} href={links[0].href} icon={links[0].icon} image={links[0].image} className="flex md:hidden" />
+      <NavLink
+        name={links[0].name}
+        href={links[0].href}
+        icon={links[0].icon}
+        image={links[0].image}
+        className="flex md:hidden"
+      />
     </>
   );
 }

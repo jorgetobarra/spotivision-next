@@ -11,7 +11,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${rubik.variable}`}>
       <body>
-        <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}>
+        <Suspense
+          fallback={(
+            <div className="flex h-screen items-center justify-center">
+              Loading...
+            </div>
+          )}
+        >
           {children}
         </Suspense>
       </body>

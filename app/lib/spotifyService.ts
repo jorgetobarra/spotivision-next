@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { Contestant } from './models/contestant';
-import { SpotifyTracksResponse, Track, SpotifyPlaylist } from './models/spotifyModels';
+import {
+  SpotifyTracksResponse,
+  Track,
+  SpotifyPlaylist,
+} from './models/spotifyModels';
 
 const TOP_TRACKS_KEY = 'topTracks';
 const PROFILE_KEY = 'profile';
@@ -46,21 +50,29 @@ export const authorizationUrl = `https://accounts.spotify.com/authorize?client_i
 export const getTopTracks = async (token: string, timeRange: string) => {
   try {
     if (CreateTopTracksKey(timeRange) in sessionStorage) {
-      return JSON.parse(sessionStorage.getItem(CreateTopTracksKey(timeRange)) || '[]') as Track[];
+      return JSON.parse(
+        sessionStorage.getItem(CreateTopTracksKey(timeRange)) || '[]',
+      ) as Track[];
     }
-    const response = await axios.get<SpotifyTracksResponse>('https://api.spotify.com/v1/me/top/tracks', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get<SpotifyTracksResponse>(
+      'https://api.spotify.com/v1/me/top/tracks',
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          time_range: timeRange,
+          limit: 50,
+          offset: 0,
+        },
       },
-      params: {
-        time_range: timeRange,
-        limit: 50,
-        offset: 0,
-      },
-    });
-    sessionStorage.setItem(CreateTopTracksKey(timeRange), JSON.stringify(response.data.items));
+    );
+    sessionStorage.setItem(
+      CreateTopTracksKey(timeRange),
+      JSON.stringify(response.data.items),
+    );
     return response.data.items || [];
   } catch (error) {
     console.error(error);
@@ -71,7 +83,10 @@ export const getTopTracks = async (token: string, timeRange: string) => {
 export const getProfile = async (token: string) => {
   try {
     if (PROFILE_KEY in sessionStorage) {
-      return JSON.parse(sessionStorage.getItem(PROFILE_KEY) || '{}') as { id: string; name: string };
+      return JSON.parse(sessionStorage.getItem(PROFILE_KEY) || '{}') as {
+        id: string;
+        name: string;
+      };
     }
     const response = await axios.get('https://api.spotify.com/v1/me', {
       headers: {
@@ -113,18 +128,23 @@ export const searchTrack = async (searchTerm: string, token: string) => {
 export const getPlaylist = async (id: string, token: string) => {
   try {
     if (CreatePlaylistKey(id) in sessionStorage) {
-      return JSON.parse(sessionStorage.getItem(CreatePlaylistKey(id)) || '{}') as {name: string, imageSrc: string, contestants: Contestant[]};
+      return JSON.parse(
+        sessionStorage.getItem(CreatePlaylistKey(id)) || '{}',
+      ) as { name: string; imageSrc: string; contestants: Contestant[] };
     }
-    const response = await axios.get<SpotifyPlaylist>(`https://api.spotify.com/v1/playlists/${id}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+    const response = await axios.get<SpotifyPlaylist>(
+      `https://api.spotify.com/v1/playlists/${id}`,
+      {
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 50,
+        },
       },
-      params: {
-        limit: 50,
-      },
-    });
+    );
     const result = {
       name: response.data.name,
       imageSrc: response.data.images[0].url,

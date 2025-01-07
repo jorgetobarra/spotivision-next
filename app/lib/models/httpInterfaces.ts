@@ -1,4 +1,4 @@
 export interface HttpPetition {
-    req: any,
-    res: any,
+  req: any;
+  res: any;
 }

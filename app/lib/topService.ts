@@ -15,9 +15,10 @@ export const getUserTotalScores = async (token: string) => {
     const contestants = tracks.map(trackToContestant);
     contestants.map((contestant) => {
       const tempContestant = contestant;
-      const index = tracks
-        .findIndex((track) => contestant.spotifyData
-          .find((spotifyData) => spotifyData.trackId === track.id || spotifyData.title === track.name));
+      const index = tracks.findIndex((track) => contestant.spotifyData.find(
+        (spotifyData) => spotifyData.trackId === track.id
+            || spotifyData.title === track.name,
+      ));
       if (index !== -1) {
         let points = 50 - index;
         if (!tempContestant.points) {
@@ -29,8 +30,10 @@ export const getUserTotalScores = async (token: string) => {
       return tempContestant;
     });
     contestants.forEach((contestant) => {
-      const foundContestant = finalResults
-        .find((finalContestant) => finalContestant.spotifyData[0].trackId === contestant.spotifyData[0].trackId);
+      const foundContestant = finalResults.find(
+        (finalContestant) => finalContestant.spotifyData[0].trackId
+          === contestant.spotifyData[0].trackId,
+      );
       if (!foundContestant) {
         finalResults.push(contestant);
       } else {
@@ -52,8 +55,10 @@ export const getPlaylistScores = async (token: string, playlistId: string) => {
   const finalScores: Contestant[] = [];
   const userScores = await getUserTotalScores(token);
   playlist?.contestants.forEach((contestant) => {
-    const foundContestant = userScores
-      .find((userContestant) => userContestant.spotifyData[0].trackId === contestant.spotifyData[0].trackId);
+    const foundContestant = userScores.find(
+      (userContestant) => userContestant.spotifyData[0].trackId
+        === contestant.spotifyData[0].trackId,
+    );
     if (foundContestant) {
       finalScores.push(foundContestant);
     }

@@ -1,9 +1,6 @@
 'use client';
 
-import {
-  GlobeAltIcon,
-  MusicalNoteIcon,
-} from '@heroicons/react/24/outline';
+import { GlobeAltIcon, MusicalNoteIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { usePlaylistImage } from '../../lib/usePlaylistImage';
@@ -19,7 +16,9 @@ export function Card({
 }) {
   const router = useRouter();
   const { getPlaylistImage } = usePlaylistImage();
-  const [playlistImageSrc, setPlaylistImageSrc] = React.useState<string | null>(null);
+  const [playlistImageSrc, setPlaylistImageSrc] = React.useState<string | null>(
+    null,
+  );
 
   const setPlaylistData = (id: string) => {
     getPlaylistImage(id).then((image) => {
@@ -31,7 +30,7 @@ export function Card({
     if (playlistId) {
       setPlaylistData(playlistId);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -46,23 +45,23 @@ export function Card({
         }
       }}
     >
-      <div className="flex px-4 pb-2 justify-center">
-        <h3 className="ml-2 text-lg text-center font-medium">{title}</h3>
+      <div className="flex justify-center px-4 pb-2">
+        <h3 className="ml-2 text-center text-lg font-medium">{title}</h3>
       </div>
-      {playlistImageSrc
-        ? (
-          <div
-            className="rounded-xl bg-white p-4 flex justify-center"
-          >
-            <img src={playlistImageSrc} alt="Playlist cover" className="w-32 h-32 rounded-md" />
-          </div>
-        )
-        : (
-          <div className="rounded-xl bg-white px-4 py-8 flex justify-center items-center h-40">
-            <MusicalNoteIcon className="h-8 w-8 -rotate-15" />
-            <GlobeAltIcon className="h-8 w-8 rotate-[15deg]" />
-          </div>
-        )}
+      {playlistImageSrc ? (
+        <div className="flex justify-center rounded-xl bg-white p-4">
+          <img
+            src={playlistImageSrc}
+            alt="Playlist cover"
+            className="h-32 w-32 rounded-md"
+          />
+        </div>
+      ) : (
+        <div className="flex h-40 items-center justify-center rounded-xl bg-white px-4 py-8">
+          <MusicalNoteIcon className="-rotate-15 h-8 w-8" />
+          <GlobeAltIcon className="h-8 w-8 rotate-[15deg]" />
+        </div>
+      )}
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function Login() {
   }, []);
 
   return (
-    <div className="flex justify-center w-[100vw] h-[100vh]">
+    <div className="flex h-[100vh] w-[100vw] justify-center">
       <Loader />
     </div>
   );

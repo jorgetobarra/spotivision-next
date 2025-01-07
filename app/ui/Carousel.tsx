@@ -3,11 +3,12 @@
 import React from 'react';
 
 interface CarouselProps {
-    imagesUrls: string[];
+  imagesUrls: string[];
 }
 
 export function AnimatedPhotoGallery({ imagesUrls }: CarouselProps) {
-  const allUrls = imagesUrls.slice(0, 9)
+  const allUrls = imagesUrls
+    .slice(0, 9)
     .concat(new Array(9 - imagesUrls.length).fill(''))
     .map((url, index) => ({
       id: url.substring(url.lastIndexOf('/') + 1) || index,
@@ -34,11 +35,17 @@ export function AnimatedPhotoGallery({ imagesUrls }: CarouselProps) {
   }, []);
 
   return (
-    <div className="grid gap-4 grid-cols-3 grid-rows-3">
-      {urls.map((url, index) => (
-        url.url ? <img key={url.id} src={url.url} alt={`carousel-${index}`} className="rounded-md" />
-          : <div key={url.id} className="rounded-md bg-slate-100" />
-      ))}
+    <div className="grid grid-cols-3 grid-rows-3 gap-4">
+      {urls.map((url, index) => (url.url ? (
+        <img
+          key={url.id}
+          src={url.url}
+          alt={`carousel-${index}`}
+          className="rounded-md"
+        />
+      ) : (
+        <div key={url.id} className="rounded-md bg-slate-100" />
+      )))}
     </div>
   );
 }

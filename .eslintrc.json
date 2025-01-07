@@ -2,10 +2,15 @@
   "extends": ["next/core-web-vitals", "airbnb", "plugin:react/jsx-runtime"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "import/extensions": ["error", "always", { "js": "never" ,"ts": "never" , "tsx": "never" }],
+    "import/extensions": [
+      "error",
+      "always",
+      { "js": "never", "ts": "never", "tsx": "never" }
+    ],
     "import/prefer-default-export": ["off"],
     "react/require-default-props": ["off"],
     "@next/next/no-img-element": ["off"],
-    "max-len": ["error", { "code": 200 }]
+    "max-len": ["warn", { "code": 300 }],
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }
