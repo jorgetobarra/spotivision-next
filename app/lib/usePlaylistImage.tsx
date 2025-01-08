@@ -14,11 +14,16 @@ export const usePlaylistImage = () => {
     if (imagesSrc?.[id]) return imagesSrc[id];
     const token = getSpotifyToken();
     if (!token) return null;
-    const playlist = await getPlaylist(id, token);
-    if (!playlist) return null;
-    const image = playlist.imageSrc;
-    setImagesSrc((prev) => ({ ...prev, [id]: image }));
-    return image;
+    try {
+      const playlist = await getPlaylist(id, token);
+      if (!playlist) return null;
+      const image = playlist.imageSrc;
+      setImagesSrc((prev) => ({ ...prev, [id]: image }));
+      return image;
+    } catch (error) {
+      // TODO: Show error snackbar
+      return null;
+    }
   };
 
   return { getPlaylistImage };

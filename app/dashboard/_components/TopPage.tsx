@@ -17,6 +17,7 @@ export function TopPage({
 }) {
   const downloadRef = React.useRef<HTMLDivElement | null>(null);
   const [results, setResults] = React.useState<Contestant[]>([]);
+  const [isFetchError, setIsFetchError] = React.useState<boolean>(false);
   const { exportToPng } = useScreenshot();
   const { getSpotifyToken } = useAuthentication();
   const token = getSpotifyToken();
@@ -35,13 +36,14 @@ export function TopPage({
   async function fetchData() {
     if (results?.length) return;
 
-    let res: Contestant[] = [];
+    let res;
     if (playlist) {
       res = await getPlaylistScores(token, playlist);
     } else {
       res = await getGenericScores(token);
     }
-    setResults(res.slice(0, 10));
+    setResults(res.scores?.slice(0, 10) || []);
+    setIsFetchError(res.isError);
   }
 
   React.useEffect(() => {
@@ -60,7 +62,12 @@ export function TopPage({
         <ArrowDownIcon className="w-5" />
         Download your top
       </button>
-      <Top topName={topName} results={results} downloadRef={downloadRef} />
+      <Top
+        topName={topName}
+        results={results}
+        downloadRef={downloadRef}
+        isError={isFetchError}
+      />
     </div>
   );
 }
