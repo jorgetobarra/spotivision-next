@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import React from 'react';
 import { useAuthentication } from '../../lib/hooks/useAuthentication';
 import { Contestant } from '../../lib/models/contestant';
 import { getGenericScores, getPlaylistScores } from '../../lib/topService';
 import { useScreenshot } from '../../lib/useScreenshot';
+import { LoaderPage } from '../../ui/LoaderPage';
 import { Top } from '../../ui/top/Top';
 
 export function TopPage({
@@ -18,6 +19,7 @@ export function TopPage({
   const downloadRef = React.useRef<HTMLDivElement | null>(null);
   const [results, setResults] = React.useState<Contestant[]>([]);
   const [isFetchError, setIsFetchError] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const { exportToPng } = useScreenshot();
   const { getSpotifyToken } = useAuthentication();
   const token = getSpotifyToken();
@@ -35,7 +37,7 @@ export function TopPage({
 
   async function fetchData() {
     if (results?.length) return;
-
+    setIsLoading(true);
     let res;
     if (playlist) {
       res = await getPlaylistScores(token, playlist);
@@ -44,6 +46,7 @@ export function TopPage({
     }
     setResults(res.scores?.slice(0, 10) || []);
     setIsFetchError(res.isError);
+    setIsLoading(false);
   }
 
   React.useEffect(() => {
@@ -62,12 +65,18 @@ export function TopPage({
         <ArrowDownIcon className="w-5" />
         Download your top
       </button>
-      <Top
-        topName={topName}
-        results={results}
-        downloadRef={downloadRef}
-        isError={isFetchError}
-      />
+      { isLoading ? (
+        // TODO: Change for a skeleton
+        <LoaderPage />
+      )
+        : (
+          <Top
+            topName={topName}
+            results={results}
+            downloadRef={downloadRef}
+            isError={isFetchError}
+          />
+        )}
     </div>
   );
 }

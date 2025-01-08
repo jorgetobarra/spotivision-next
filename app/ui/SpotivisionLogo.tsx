@@ -25,16 +25,16 @@ export default function SpotivisionLogo({
 
   return (
     <div
-      className={`${rubik.className} flex flex-row items-center leading-none text-${color} ${className}`}
+      className={`${rubik.className} flex flex-row items-center leading-none text-${color} ${className || ''}`}
     >
       <img
         src="/SpotivisionLogo.svg"
         className={`${logoSizes[size]} ${
           color !== 'white' && `bg-${color}`
-        } rounded-md`}
+        } rounded-sm`}
         alt="Spotivision logo"
       />
-      <p className={`${textSizes[size]} pl-2`}>Spotivision</p>
+      <p className={`${textSizes[size]} pl-1`}>Spotivision</p>
     </div>
   );
 }
