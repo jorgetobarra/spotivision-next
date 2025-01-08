@@ -1,9 +1,8 @@
-import { GlobeAltIcon, MusicalNoteIcon } from '@heroicons/react/24/outline';
 import { rubik } from '@/app/ui/fonts';
 
 export default function SpotivisionLogo({
   size = 'md',
-  color = 'text-white',
+  color = 'white',
   className,
 }: {
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -26,10 +25,15 @@ export default function SpotivisionLogo({
 
   return (
     <div
-      className={`${rubik.className} flex flex-row items-center leading-none ${color} ${className}`}
+      className={`${rubik.className} flex flex-row items-center leading-none text-${color} ${className}`}
     >
-      <MusicalNoteIcon className={`${logoSizes[size]} -rotate-15`} />
-      <GlobeAltIcon className={`${logoSizes[size]} rotate-[15deg]`} />
+      <img
+        src="/SpotivisionLogo.svg"
+        className={`${logoSizes[size]} ${
+          color !== 'white' && `bg-${color}`
+        } rounded-md`}
+        alt="Spotivision logo"
+      />
       <p className={`${textSizes[size]} pl-2`}>Spotivision</p>
     </div>
   );

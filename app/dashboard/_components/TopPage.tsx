@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { ArrowDownIcon } from '@heroicons/react/24/outline';
 import { useAuthentication } from '../../lib/hooks/useAuthentication';
 import { Contestant } from '../../lib/models/contestant';
 import { getGenericScores, getPlaylistScores } from '../../lib/topService';
@@ -49,13 +50,14 @@ export function TopPage({
   }, []);
 
   return (
-    <div className="w-[100%] justify-items-center">
+    <div className="flex w-[100%] flex-col justify-items-center">
       <button
         type="button"
         onClick={handleDownload}
-        className="m-4 rounded bg-green-500 px-4 py-2 text-white shadow-sm hover:bg-green-700
-         focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+        className="m-4 flex items-center justify-center gap-2 rounded bg-green-500 px-4
+         py-2 text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
       >
+        <ArrowDownIcon className="w-5" />
         Download your top
       </button>
       <Top topName={topName} results={results} downloadRef={downloadRef} />
