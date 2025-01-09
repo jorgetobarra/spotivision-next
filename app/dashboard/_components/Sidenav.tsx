@@ -29,7 +29,7 @@ export default function SideNav() {
         <div className="hidden h-auto w-full grow rounded-md bg-accentBg dark:bg-darkAccentBg md:block" />
         <div
           className={`flex h-[48px] w-full grow items-center justify-end gap-2 rounded-md
-          bg-accentBg dark:bg-darkAccentBg from-violet-300 to-blue-200 p-3 text-xs font-light text-violet-300 hover:bg-gradient-to-r hover:text-white md:flex-none md:justify-start md:p-2 md:px-3`}
+          bg-accentBg from-violet-300 to-blue-200 p-3 text-xs font-light text-violet-300 hover:bg-gradient-to-r hover:text-white dark:bg-darkAccentBg md:flex-none md:justify-start md:p-2 md:px-3`}
         >
           <div className="">Created with love, by Jologe</div>
           {/* <div className="block md:hidden">by Jologe</div> */}
@@ -38,11 +38,13 @@ export default function SideNav() {
           <button
             type="button"
             className={`flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md
-          bg-accentBg dark:bg-darkAccentBg p-3 text-sm font-medium hover:bg-sky-100 hover:text-primary-600 md:flex-none md:justify-start md:p-2 md:px-3`}
+          bg-accentBg p-3 text-sm font-medium hover:bg-sky-100 hover:text-primary-600 dark:bg-darkAccentBg md:flex-none md:justify-start md:p-2 md:px-3`}
             onClick={handleSignOut}
           >
             <PowerIcon className="w-6 text-text dark:text-darkText" />
-            <div className="hidden md:block text-text dark:text-darkText">Sign Out</div>
+            <div className="hidden text-text dark:text-darkText md:block">
+              Sign Out
+            </div>
           </button>
         </form>
       </div>

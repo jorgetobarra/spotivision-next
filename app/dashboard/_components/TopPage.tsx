@@ -55,31 +55,31 @@ export function TopPage({
   }, []);
 
   return (
-    <div className="flex w-[100%] flex-col justify-items-center">
-      { isLoading && (
+    <div className="ml-4 flex w-[100%] flex-col justify-items-center">
+      {isLoading && (
         // TODO: Change for a skeleton
         <LoaderPage />
       )}
       {!isLoading && (
-      <>
-        {!isFetchError && !!results?.length && (
-        <button
-          type="button"
-          onClick={handleDownload}
-          className="m-4 flex items-center justify-center gap-2 rounded bg-primary-500 hover:bg-primary-600 px-4
-         py-2 text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
-        >
-          <ArrowDownIcon className="w-5" />
-          Download your top
-        </button>
-        )}
-        <Top
-          topName={topName}
-          results={results}
-          downloadRef={downloadRef}
-          isError={isFetchError}
-        />
-      </>
+        <>
+          {!isFetchError && !!results?.length && (
+            <button
+              type="button"
+              onClick={handleDownload}
+              className="hover:bg-primary-700 my-4 flex w-[80%] max-w-[720px] items-center justify-center gap-2 rounded bg-primary-500  px-4
+         py-2 text-white shadow-lg hover:bg-primary-600 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
+            >
+              <ArrowDownIcon className="w-5" />
+              Download your top
+            </button>
+          )}
+          <Top
+            topName={topName}
+            results={results}
+            downloadRef={downloadRef}
+            isError={isFetchError}
+          />
+        </>
       )}
     </div>
   );

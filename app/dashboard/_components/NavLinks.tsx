@@ -25,8 +25,8 @@ function NavLink({
     <Link
       href={href}
       className={clsx(
-        `flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-accentBg dark:bg-darkAccentBg p-3 text-sm
-      font-medium hover:bg-primary-100 hover:text-primary-700 md:flex-none md:justify-start md:p-2 md:px-3 ${className}`,
+        `hover:bg-primary-100 hover:text-primary-700 flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-accentBg p-3
+      text-sm font-medium dark:bg-darkAccentBg md:flex-none md:justify-start md:p-2 md:px-3 ${className}`,
         {
           'bg-primary-100 text-primary-700': pathname === href,
         },
@@ -37,7 +37,7 @@ function NavLink({
       ) : (
         <LinkIcon className="w-6 text-text dark:text-darkText" />
       )}
-      <p className="hidden md:block text-text dark:text-darkText">{name}</p>
+      <p className="hidden text-text dark:text-darkText md:block">{name}</p>
     </Link>
   );
 }

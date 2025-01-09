@@ -25,12 +25,12 @@ export default function Page() {
   }, [router, token]);
 
   return (
-    <main className="flex min-h-screen flex-col p-6 bg-bg dark:bg-darkBg">
+    <main className="flex min-h-screen flex-col bg-bg p-6 dark:bg-darkBg">
       <div className="align-items-center flex h-20 shrink-0 justify-center rounded-lg bg-primary-500 p-4 md:h-52">
         <StreamvisionLogo size="xl" />
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-accentBg dark:bg-darkAccentBg px-6 py-10 md:w-3/5 md:px-20">
+        <div className="flex flex-col justify-center gap-6 rounded-lg bg-accentBg px-6 py-10 dark:bg-darkAccentBg md:w-3/5 md:px-20">
           <p className="text-xl text-text dark:text-darkText md:text-3xl md:leading-normal">
             <strong>Welcome to Streamvision.</strong>
             <br />
@@ -56,7 +56,7 @@ export default function Page() {
             <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
         </div>
-        <div className="flex items-center justify-center rounded-lg bg-accentBg dark:bg-darkAccentBg p-6 md:w-2/5">
+        <div className="flex items-center justify-center rounded-lg bg-accentBg p-6 dark:bg-darkAccentBg md:w-2/5">
           <AnimatedPhotoGallery imagesUrls={albumCovers} />
         </div>
       </div>

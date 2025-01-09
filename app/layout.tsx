@@ -12,13 +12,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${rubik.variable}`}>
       <body>
-        <Suspense
-          fallback={(
-            <LoaderPage />
-          )}
-        >
-          {children}
-        </Suspense>
+        <Suspense fallback={<LoaderPage />}>{children}</Suspense>
       </body>
     </html>
   );

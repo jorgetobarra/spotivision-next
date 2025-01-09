@@ -5,6 +5,7 @@ export interface Contestant {
   singer: string;
   spotifyData: Array<{
     trackId: string;
+    trackLink: string;
     title: string;
     singer: string;
     imageUrl: string;

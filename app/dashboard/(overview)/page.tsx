@@ -5,10 +5,14 @@ import { contestsLinks } from '../../lib/contestsList';
 export default async function Page() {
   return (
     <main>
-      <h1 className={`${rubik.className} mb-4 text-xl md:text-2xl text-text dark:text-darkText`}>
+      <h1
+        className={`${rubik.className} mb-4 text-xl text-text dark:text-darkText md:text-2xl`}
+      >
         Select a contest to create your top
       </h1>
-      <h2 className={`${rubik.className} md:text-md mb-4 text-sm font-light text-text dark:text-darkText`}>
+      <h2
+        className={`${rubik.className} md:text-md mb-4 text-sm font-light text-text dark:text-darkText`}
+      >
         Your top will be based on the times you listened to the songs of the
         selected contest.
       </h2>

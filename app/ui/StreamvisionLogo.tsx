@@ -25,7 +25,11 @@ export default function StreamvisionLogo({
 
   return (
     <div
-      className={`${rubik.className} flex flex-row items-center leading-none text-${color} ${className || ''}`}
+      className={`${
+        rubik.className
+      } flex flex-row items-center leading-none text-${color} ${
+        className || ''
+      }`}
     >
       <img
         src="/SpotivisionLogo.svg"

@@ -1,7 +1,7 @@
 import { rubik } from '@/app/ui/fonts';
 import React from 'react';
 import { Contestant } from '../../lib/models/contestant';
-import { Card } from './card';
+import { Card } from './Card';
 import StreamvisionLogo from '../StreamvisionLogo';
 
 export function PrintableTop({
@@ -19,7 +19,7 @@ export function PrintableTop({
       <div
         id="printable-table"
         ref={downloadRef}
-        className="fixed left-0 top-0 -z-20 h-[667px] w-[375px] bg-bg dark:bg-darkBg p-4"
+        className="fixed left-0 top-0 -z-20 h-[667px] w-[375px] bg-bg p-4 dark:bg-darkBg"
       >
         <div className="mb-1 mt-1 flex justify-end">
           <StreamvisionLogo size="sm" color="primary-500" />

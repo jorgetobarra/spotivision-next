@@ -22,6 +22,7 @@ export const trackToContestant = (track: Track): Contestant => ({
   spotifyData: [
     {
       trackId: track.id,
+      trackLink: track.external_urls.spotify,
       title: track.name,
       singer: track.artists[0].name,
       imageUrl: track.album.images[0].url,
@@ -38,6 +39,7 @@ export const artistsToContestants = (track: Track): Contestant => ({
   spotifyData: [
     {
       trackId: track.id,
+      trackLink: track.external_urls.spotify,
       title: track.name,
       singer: '',
       imageUrl: track.album.images[0].url,
