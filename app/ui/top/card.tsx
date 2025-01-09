@@ -4,7 +4,7 @@ import { Contestant } from '../../lib/models/contestant';
 const usualClassNames = {
   container: `${rubik.className} flex items-center justify-center p-1 max-w-[720px] w-[100%] self-center bg-primary-500 text-white rounded-lg shadow-md mb-2`,
   position: 'text-xl font-bold mx-2 w-[1.3rem]',
-  image: 'w-8 h-8 rounded-full mr-2',
+  image: 'w-8 h-8 rounded-md mr-2',
   songInfo: 'flex flex-col w-[100%]',
   songTitle: 'text-sm font-semibold truncate',
   singer: 'text-xs truncate',
@@ -14,7 +14,7 @@ const usualClassNames = {
 const printClassNames = {
   container: `${rubik.className} flex items-center p-1 bg-primary-500 text-white rounded-lg mb-2`,
   position: 'text-xl font-semibold mx-2 w-[1.3rem]',
-  image: 'w-8 h-8 rounded-full mr-2',
+  image: 'w-8 h-8 rounded-md mr-2',
   songInfo: 'flex flex-col max-w-[13rem]',
   songTitle: 'text-sm font-semibold truncate',
   singer: 'text-xs truncate',
