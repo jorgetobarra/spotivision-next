@@ -47,7 +47,7 @@ export function Loader() {
           />
         </circle>
       </svg>
-      <p className="pl-2"> Loading...</p>
+      <p className="pl-2 text-text dark:text-darkText"> Loading...</p>
     </div>
   );
 }

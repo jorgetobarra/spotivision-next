@@ -2,6 +2,7 @@
 import '@/app/ui/global.css';
 import { Suspense } from 'react';
 import { inter, rubik } from './ui/fonts';
+import { LoaderPage } from './ui/LoaderPage';
 
 export default function RootLayout({
   children,
@@ -13,9 +14,7 @@ export default function RootLayout({
       <body>
         <Suspense
           fallback={(
-            <div className="flex h-screen items-center justify-center">
-              Loading...
-            </div>
+            <LoaderPage />
           )}
         >
           {children}

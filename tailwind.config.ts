@@ -13,15 +13,25 @@ const config: Config = {
         13: 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
-        green: {
+        bg: '#fff',
+        darkBg: '#555',
+        modalBg: 'rgba(0, 0, 0, 0.4)',
+        modalDarkBg: 'rgba(255, 255, 255, 0.4)',
+        accentBg: '#f0f0f0',
+        darkAccentBg: '#111',
+        text: '#333',
+        subText: '#666',
+        darkText: '#fff',
+        darkSubText: '#aaa',
+        primary: {
           400: '#66BB6A',
           500: '#4CAF50',
           600: '#43A047',
+        },
+        secondary: {
+          400: '#2589FE',
+          500: '#0070F3',
+          600: '#2F6FEB',
         },
       },
     },

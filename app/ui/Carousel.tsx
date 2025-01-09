@@ -44,7 +44,7 @@ export function AnimatedPhotoGallery({ imagesUrls }: CarouselProps) {
           className="rounded-md"
         />
       ) : (
-        <div key={url.id} className="rounded-md bg-slate-100" />
+        <div key={url.id} className="rounded-md bg-bg dark:bg-darkBg" />
       )))}
     </div>
   );

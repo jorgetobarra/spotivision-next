@@ -35,7 +35,7 @@ export function Card({
 
   return (
     <div
-      className="rounded-xl bg-gray-50 p-2 shadow-sm"
+      className="rounded-xl bg-accentBg dark:bg-darkAccentBg p-2 shadow-sm"
       role="button"
       tabIndex={0}
       onClick={() => router.push(href)}
@@ -46,10 +46,10 @@ export function Card({
       }}
     >
       <div className="flex justify-center px-4 pb-2">
-        <h3 className="ml-2 text-center text-lg font-medium">{title}</h3>
+        <h3 className="ml-2 text-center text-lg font-medium text-text dark:text-darkText">{title}</h3>
       </div>
       {playlistImageSrc ? (
-        <div className="flex justify-center rounded-xl bg-white p-4">
+        <div className="flex justify-center rounded-xl bg-bg dark:bg-darkBg p-4">
           <img
             src={playlistImageSrc}
             alt="Playlist cover"
@@ -57,9 +57,9 @@ export function Card({
           />
         </div>
       ) : (
-        <div className="flex h-40 items-center justify-center rounded-xl bg-white px-4 py-8">
-          <MusicalNoteIcon className="-rotate-15 h-8 w-8" />
-          <GlobeAltIcon className="h-8 w-8 rotate-[15deg]" />
+        <div className="flex h-40 items-center justify-center rounded-xl bg-bg dark:bg-darkBg px-4 py-8">
+          <MusicalNoteIcon className="-rotate-15 h-8 w-8 text-text dark:text-darkText" />
+          <GlobeAltIcon className="h-8 w-8 rotate-[15deg] text-text dark:text-darkText" />
         </div>
       )}
     </div>

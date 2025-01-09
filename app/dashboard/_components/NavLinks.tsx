@@ -25,19 +25,19 @@ function NavLink({
     <Link
       href={href}
       className={clsx(
-        `flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm
-      font-medium hover:bg-green-100 hover:text-green-700 md:flex-none md:justify-start md:p-2 md:px-3 ${className}`,
+        `flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-accentBg dark:bg-darkAccentBg p-3 text-sm
+      font-medium hover:bg-primary-100 hover:text-primary-700 md:flex-none md:justify-start md:p-2 md:px-3 ${className}`,
         {
-          'bg-green-100 text-green-700': pathname === href,
+          'bg-primary-100 text-primary-700': pathname === href,
         },
       )}
     >
       {image ? (
         <img src={image} alt={`${name}`} className="h-6 w-6" />
       ) : (
-        <LinkIcon className="w-6" />
+        <LinkIcon className="w-6 text-text dark:text-darkText" />
       )}
-      <p className="hidden md:block">{name}</p>
+      <p className="hidden md:block text-text dark:text-darkText">{name}</p>
     </Link>
   );
 }

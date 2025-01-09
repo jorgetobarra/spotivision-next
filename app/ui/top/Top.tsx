@@ -25,13 +25,13 @@ export function Top({
           />
         ))}
         {!results.length && !isError && (
-          <p className="mt-4 w-full text-center text-slate-500">
+          <p className="mt-16 w-full text-center text-slate-500">
             There seems to be no data for this top. Try another one!
           </p>
         )}
         {/* TODO: Add contact me page when it exists */}
         {isError && (
-          <p className="mt-4 w-full text-center text-slate-500">
+          <p className="mt-16 w-full text-center text-subText dark:text-darkSubText">
             There seems to be an error in the Spotify login. Please try again
             later.
           </p>
