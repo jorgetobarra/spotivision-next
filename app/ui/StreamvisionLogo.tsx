@@ -1,6 +1,6 @@
 import { rubik } from '@/app/ui/fonts';
 
-export default function SpotivisionLogo({
+export default function StreamvisionLogo({
   size = 'md',
   color = 'white',
   className,
@@ -32,9 +32,9 @@ export default function SpotivisionLogo({
         className={`${logoSizes[size]} ${
           color !== 'white' && `bg-${color}`
         } rounded-sm`}
-        alt="Spotivision logo"
+        alt="Streamvision logo"
       />
-      <p className={`${textSizes[size]} pl-1`}>Spotivision</p>
+      <p className={`${textSizes[size]} pl-1`}>Streamvision</p>
     </div>
   );
 }

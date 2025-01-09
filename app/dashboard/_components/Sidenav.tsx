@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import NavLinks from '@/app/dashboard/_components/NavLinks';
-import SpotivisionLogo from '@/app/ui/SpotivisionLogo';
+import StreamvisionLogo from '@/app/ui/StreamvisionLogo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 import { useAuthentication } from '../../lib/hooks/useAuthentication';
@@ -21,7 +21,7 @@ export default function SideNav() {
         href="/dashboard"
       >
         <div className="flex w-full justify-center text-white">
-          <SpotivisionLogo />
+          <StreamvisionLogo />
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">

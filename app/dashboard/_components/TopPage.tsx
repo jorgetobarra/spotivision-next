@@ -28,7 +28,7 @@ export function TopPage({
     if (downloadRef?.current) {
       downloadRef.current.hidden = false;
       // @ts-expect-error - ref.current is not null, idk why
-      await exportToPng(downloadRef, `${topName} Spotivision top`);
+      await exportToPng(downloadRef, `${topName} Streamvision top`);
       downloadRef.current.hidden = true;
     } else {
       console.error('Ref is null', downloadRef);

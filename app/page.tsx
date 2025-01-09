@@ -1,6 +1,6 @@
 'use client';
 
-import SpotivisionLogo from '@/app/ui/SpotivisionLogo';
+import StreamvisionLogo from '@/app/ui/StreamvisionLogo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -27,12 +27,12 @@ export default function Page() {
   return (
     <main className="flex min-h-screen flex-col p-6 bg-bg dark:bg-darkBg">
       <div className="align-items-center flex h-20 shrink-0 justify-center rounded-lg bg-primary-500 p-4 md:h-52">
-        <SpotivisionLogo size="xl" />
+        <StreamvisionLogo size="xl" />
       </div>
       <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-accentBg dark:bg-darkAccentBg px-6 py-10 md:w-3/5 md:px-20">
           <p className="text-xl text-text dark:text-darkText md:text-3xl md:leading-normal">
-            <strong>Welcome to Spotivision.</strong>
+            <strong>Welcome to Streamvision.</strong>
             <br />
             This app will create your top of the songs for Benidorm Fest,
             Eurovision, and other music competitions based on what you listen to
