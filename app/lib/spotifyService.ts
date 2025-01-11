@@ -190,9 +190,7 @@ export const getPlaylist = async (id: string, token: string) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        params: {
-          limit: 50,
-        },
+        params: {},
       },
     );
     const result = {
