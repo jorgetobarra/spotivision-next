@@ -2,16 +2,31 @@ import React from 'react';
 import { toJpeg, toPng } from 'html-to-image';
 
 export const useScreenshot = () => {
-  const exportToPng = async (
-    ref: React.MutableRefObject<HTMLElement>,
-    name = 'exported-image',
-  ) => {
+  const exportToPng = async (ref: React.MutableRefObject<HTMLElement>) => {
     if (ref.current) {
       try {
         await toPng(ref.current);
         await toPng(ref.current);
         await toPng(ref.current);
         const dataUrl = await toPng(ref.current);
+        return dataUrl;
+      } catch (error) {
+        console.error('Failed to export as PNG', error);
+      }
+    }
+    return null;
+  };
+
+  const downloadAsPng = async (
+    ref: React.MutableRefObject<HTMLElement>,
+    name = 'exported-image',
+  ) => {
+    if (ref.current) {
+      try {
+        const dataUrl = await exportToPng(ref);
+        if (!dataUrl) {
+          return;
+        }
         const link = document.createElement('a');
         link.href = dataUrl;
         link.download = `${name}.png`;
@@ -42,5 +57,5 @@ export const useScreenshot = () => {
     }
   };
 
-  return { exportToPng, exportToJpg };
+  return { exportToPng, downloadAsPng, exportToJpg };
 };

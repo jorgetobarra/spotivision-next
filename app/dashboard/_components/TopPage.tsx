@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowDownIcon } from '@heroicons/react/24/outline';
+import { ArrowDownIcon, ShareIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import { useAuthentication } from '../../lib/hooks/useAuthentication';
 import { Contestant } from '../../lib/models/contestant';
@@ -20,7 +20,7 @@ export function TopPage({
   const [results, setResults] = React.useState<Contestant[]>([]);
   const [isFetchError, setIsFetchError] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const { exportToPng } = useScreenshot();
+  const { exportToPng, downloadAsPng } = useScreenshot();
   const { getSpotifyToken } = useAuthentication();
   const token = getSpotifyToken();
 
@@ -28,8 +28,31 @@ export function TopPage({
     if (downloadRef?.current) {
       downloadRef.current.hidden = false;
       // @ts-expect-error - ref.current is not null, idk why
-      await exportToPng(downloadRef, `${topName} Streamvision top`);
+      await downloadAsPng(downloadRef, `${topName} Streamvision top`);
       downloadRef.current.hidden = true;
+    } else {
+      console.error('Ref is null', downloadRef);
+    }
+  };
+
+  const handleShare = async () => {
+    if (downloadRef?.current) {
+      downloadRef.current.hidden = false;
+      const pngUrl = await exportToPng(
+        downloadRef,
+        // @ts-expect-error - ref.current is not null, idk why
+        `${topName} Streamvision top`,
+      );
+      downloadRef.current.hidden = true;
+      if (pngUrl) {
+        const blob = await fetch(pngUrl).then((res) => res.blob());
+        const file = new File([blob], `${topName}.png`, { type: 'image/png' });
+        const shareData = {
+          title: `${topName} Streamvision top`,
+          files: [file],
+        };
+        navigator?.share(shareData);
+      }
     } else {
       console.error('Ref is null', downloadRef);
     }
@@ -63,15 +86,26 @@ export function TopPage({
       {!isLoading && (
         <>
           {!isFetchError && !!results?.length && (
-            <button
-              type="button"
-              onClick={handleDownload}
-              className="hover:bg-primary-700 my-4 flex w-[80%] max-w-[720px] items-center justify-center gap-2 rounded bg-primary-500  px-4
+            <div className="my-4 flex w-[80%] max-w-[720px] flex-row items-center gap-2">
+              <button
+                type="button"
+                onClick={handleDownload}
+                className="hover:bg-primary-700 flex w-full items-center justify-center gap-2 rounded bg-primary-500 px-4
          py-2 text-white shadow-lg hover:bg-primary-600 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
-            >
-              <ArrowDownIcon className="w-5" />
-              Download your top
-            </button>
+              >
+                <ArrowDownIcon className="w-5" />
+                Download
+              </button>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="hover:bg-primary-700 flex w-full items-center justify-center gap-2 rounded bg-primary-500 px-4
+         py-2 text-white shadow-lg hover:bg-primary-600 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
+              >
+                <ShareIcon className="w-5" />
+                Share
+              </button>
+            </div>
           )}
           <Top
             topName={topName}
