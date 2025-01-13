@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [router, token]);
 
   return (
-    <div className="flex h-screen flex-col bg-bg dark:bg-darkBg md:flex-row md:overflow-hidden">
+    <div className="flex min-h-screen flex-col bg-bg dark:bg-darkBg md:flex-row md:overflow-hidden">
       <div className="w-full flex-none md:w-64">
         <SideNav />
       </div>
