@@ -26,4 +26,22 @@ Your env file will need the following vars:
 
 ## Screenshots
 
-TBD
+### Login with Spotify
+
+![Spotify Login](./screenshots/login_screen.png)
+
+### Main screen
+
+![Playlists](./screenshots/playlists_screen.png)
+
+### Top screen
+
+![Top screen](./screenshots/top_screen.png)
+
+### Downloaded top
+
+![Downloaded top](./screenshots/downloaded_top.png)
+
+### Dark mode available
+
+![Dark mode](./screenshots/dark_mode.png)
