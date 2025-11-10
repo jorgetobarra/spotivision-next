@@ -1,13 +1,20 @@
-import Link from 'next/link';
 import NavLinks from '@/app/dashboard/_components/NavLinks';
+import { useAuthentication } from '@/app/lib/hooks/useAuthentication';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '@/app/ui/DropdownMenu';
 import StreamvisionLogo from '@/app/ui/StreamvisionLogo';
 import { PowerIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useAuthentication } from '../../lib/hooks/useAuthentication';
+import { useState } from 'react';
 
 export default function SideNav() {
   const { removeSpotifyToken } = useAuthentication();
   const router = useRouter();
+  const [dropDownOpen, setDropDownOpen] = useState(false);
 
   const handleSignOut = () => {
     removeSpotifyToken();
@@ -26,6 +33,20 @@ export default function SideNav() {
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            className={
+            `hover:bg-primary-100 hover:text-primary-700 flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-accentBg p-3
+      text-sm font-medium dark:bg-darkAccentBg md:flex-none md:justify-start md:p-2 md:px-3`
+          }
+            onClick={() => setDropDownOpen(!dropDownOpen)}
+          >
+            <p className="hidden text-text dark:text-darkText md:block">Contests</p>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <NavLinks />
+          </DropdownMenuContent>
+        </DropdownMenu>
         <div className="hidden h-auto w-full grow rounded-md bg-accentBg dark:bg-darkAccentBg md:block" />
         <div
           className={`flex h-[48px] w-full grow items-center justify-end gap-2 rounded-md
@@ -48,6 +69,7 @@ export default function SideNav() {
           </button>
         </form>
       </div>
+
     </div>
   );
 }
