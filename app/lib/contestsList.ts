@@ -9,9 +9,9 @@ export const contestsLinks = [
     name: 'Benidorm Fest 2025',
     href: '/dashboard/benidorm-fest-2025',
     icon: DocumentDuplicateIcon,
-    playlistId: '1G9e7rMXjXUnU17uK9WefP',
+    playlistId: '7KxVXjZYpeHDTdnSudz5VP',
     image:
-      'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8440d575bec461f1f595017ef6',
+      'https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c46820c348ab9596a90a1382e',
   },
   {
     name: 'All Benidorm Fests',
