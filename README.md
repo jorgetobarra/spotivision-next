@@ -45,3 +45,7 @@ Your env file will need the following vars:
 ### Dark mode available
 
 ![Dark mode](./screenshots/dark_mode.png)
+
+## Live Demo
+
+[Click to see on YouTube](https://www.youtube.com/watch?v=pEl4xWZT6cY)
